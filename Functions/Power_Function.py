@@ -1,7 +1,17 @@
 #Goal: Calculate the specified power of a specified base
 #Method: Exponentiation by squaring 
 
-def power_function (base, power):
+def power_function (args):
+    base = 0
+    power = 0
+
+    # If the right number of arguments are passed, then continue
+    if(len(args) == 2):
+        base = args[0]
+        power = args[1]
+    else:
+        raise Exception(f"Invalid number of arguments, power_function got {len(args)} but expected 2.")
+
     #Case 1: Power is a negative number
     if (power<0):
         base = 1/base
