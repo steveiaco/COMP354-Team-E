@@ -17,6 +17,6 @@ def ln(args):
 
     #Number of iterations currently hardcoded at 1000, but we can change this to an accuracy based metric by calculating the accuracy of e^s = x to a certain bound.
     for i in range(1000):
-        s += ( 1 / (2 * i + 1) ) * power_function((x-1) / (x+1), 2 * i + 1)
+        s += ( 1 / (2 * i + 1) ) * power_function([(x-1) / (x+1), 2 * i + 1])
 
     return 2 * s

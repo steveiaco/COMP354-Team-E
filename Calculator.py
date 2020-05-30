@@ -1,4 +1,5 @@
 from Power_Function import power_function
+from Logarithm import ln
 
 #Placeholder function for the function map
 def ph(args):
@@ -10,7 +11,7 @@ def ph(args):
 function_map = {
     'sin': [ph, 'Description placeholder'],
     'pi^': [ph, 'Description placeholder'],
-    'ln': [ph, 'Description placeholder'],
+    'ln': [ln, 'Description placeholder'],
     'a^x': [ph, 'Description placeholder'],
     'mad': [ph, 'Description placeholder'],
     'stdev': [ph, 'Description placeholder'],
