@@ -51,27 +51,32 @@ def power_integer(base, power):
     return base * result
     
 def power_fractional (base, power):
-    #Case 1: Power is between -1 and 1 exclusively 
-    if (power > -1 and power < 1):
+    #Case 1: Power is greater or equal to 0 and base is equal to 0
+    if(power > 0 and base == 0):
+        return 0
+    #Case 2: Power is between 0 and 1 exclusively 
+    elif (power > 0 and power < 1):
         integer_result = 1
         decimal_value = power
-    #Case 2: Power is less than -1 or greater than 1
+    #Case 3: Power is between -1 and 0 exclusively 
+    elif (power > -1 and power < 0):
+        try:
+            return 1 / power_fractional(base, abs(power))
+        except Exception as e:
+            return -0.0
+    #Case 4: Power is less than -1 or greater than 1
     else: 
         integer_value = floor(power)
         integer_result = power_integer(base, integer_value)
         decimal_value = power - integer_value
     
-    #Case 3: Power is greater or equal to 0 and base is equal to 0
-    if(power > 0 and base == 0):
-        return 0
-        
     precision = 0.0000000000001
     low = 0.0
     high = 1.0
 
     try: 
         root = sqrt(base)
-        decimal_result = root;    
+        decimal_result = root   
         mid = high / 2
     
         while(abs(mid - decimal_value) > precision):
@@ -82,7 +87,7 @@ def power_fractional (base, power):
                 decimal_result *= root
             else:
                 high = mid
-                decimal_result *= (1/root)
+                decimal_result *= (1 / root)
     
             mid = (low + high) / 2
     except Exception as e:
