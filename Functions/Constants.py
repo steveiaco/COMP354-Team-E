@@ -29,12 +29,12 @@ def get_e():
         for i in range(1000):
             series_sum += (1 / math.factorial(i))
 
+        e = series_sum
+
     return e
 
 def main():
 
-    print(get_pi())
-    print(get_pi())
     print(get_e())
     print(get_e())
 
