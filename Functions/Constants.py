@@ -12,8 +12,8 @@ def get_pi():
     if pi == 0:
         series_sum = 0
 
-        # We iterate for 20 iterations, as Chudnosvky converges very quickly
-        for i in range(20):
+        # We iterate for 2 iterations, as Chudnosvky converges very quickly
+        for i in range(2):
             series_sum += (power_function([-1, i]) * math.factorial(6 * i) * (13591409 + (545140134 * i)) ) / (math.factorial(3 * i) * power_function([math.factorial(i),3]) * power_function([640320, 3*i + 1.5]))
 
         pi = 1 / (12 * series_sum)
