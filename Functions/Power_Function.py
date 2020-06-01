@@ -1,9 +1,6 @@
 #Goal: Calculate the specified power of a specified base
 #Handling: Does not compute complex numbers 
 
-from math import floor
-from math import sqrt
-
 def power_function (args):
     base = 0
     power = 0
@@ -24,7 +21,7 @@ def power_function (args):
         return base
         
     #Case 3: Power is an integer neither equal to 0 nor to 1
-    elif (floor(power) == power):
+    elif (floor_function(power) == power):
         return power_integer(base, power)
     
     #Case 4: Power is a decimal
@@ -61,12 +58,12 @@ def power_fractional (base, power):
     #Case 3: Power is between -1 and 0 exclusively 
     elif (power > -1 and power < 0):
         try:
-            return 1 / power_fractional(base, abs(power))
+            return 1 / power_fractional(base, absolute_value(power))
         except Exception as e:
             return -0.0
     #Case 4: Power is less than -1 or greater than 1
     else: 
-        integer_value = floor(power)
+        integer_value = floor_function(power)
         integer_result = power_integer(base, integer_value)
         decimal_value = power - integer_value
     
@@ -75,12 +72,12 @@ def power_fractional (base, power):
     high = 1.0
 
     try: 
-        root = sqrt(base)
+        root = sqrt_function(base)
         decimal_result = root   
         mid = high / 2
     
         while(abs(mid - decimal_value) > precision):
-            root = sqrt(root)
+            root = sqrt_function(root)
     
             if (mid <= decimal_value):
                 low = mid
@@ -95,3 +92,31 @@ def power_fractional (base, power):
         return -0.0
     
     return decimal_result * integer_result
+
+def floor_function(power):
+    power *= 1.0
+    number = str(power)
+
+    #Case 1: Power is a non-integer negative number
+    if (number[0] == "-" and power != int(power)):
+        number = -1 * (int(number[1: number.find(".")]) + 1)
+    #Case 2: Power is positive rational number
+    else: 
+        number = int(power)
+    
+    return number
+
+def sqrt_function(base):
+    precision = 0.0000000000001
+    previous, mid = 0, float(base)
+
+    while absolute_value(mid - previous) > precision:
+        previous, mid = mid, (mid + (base / mid)) / 2.0
+    
+    return mid
+
+def absolute_value(number):
+    if (number < 0):
+        number *= -1
+    
+    return number
