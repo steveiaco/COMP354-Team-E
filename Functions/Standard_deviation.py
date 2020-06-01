@@ -7,16 +7,17 @@ def standard_deviation(input):
     if count > 0:
         # if the length of argument list is 1, return 0 directly
         if count == 1:
-            return 0;
+            return 0
         # compute mean
         args = np.array(input)
-        mean, s = total_count(args)/count, 0
+        mean = total_count(args)/count
         # get a new list after each item minus mean, and square
         args_new = args - mean
         for i in range(count):
             args_new[i] = power_function([args_new[i], 2])
 
         return power_function([total_count(args_new) / count, 0.5])
+
     else:
         raise TypeError('Invalid Argument !')
 
