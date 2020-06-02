@@ -2,13 +2,11 @@
 # Taylor: cosh(x) = 1 + (x^2/2!) + (x^4/4!) + (x^6/6!) ...
 
 from Power_Function import power_function
-from Constants import e
+from Constants import get_e()
 
 
-def cosh(args):
-    x = 0
-    if(len(args) == 1):
-        x = args[0]
-    else:
-        raise Exception(f"Invalid number of arguments, power_function got {len(args)} but expected 1.")
+def cosh(number):
+    x = number
+    e = get_e()
+
     return (power_function([e, x]) + power_function([e, -x])) / 2
