@@ -31,9 +31,5 @@ def sine(num):
     return res
 
 
-#x = -10
 
-#print(math.sin(x))
-#print(sine(x))
-#print(Pwr.power_function([2, 2]))
 
