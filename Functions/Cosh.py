@@ -1,5 +1,5 @@
 from Power_Function import power_function
-from Constants import get_e()
+from Constants import get_e
 
 # Goal: calculate cosh(x)
 # Method: exponential, cosh(x) = (e^x + e^(-x))/2
