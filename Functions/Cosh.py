@@ -12,16 +12,3 @@ def cosh(args):
     else:
         raise Exception(f"Invalid number of arguments, power_function got {len(args)} but expected 1.")
     return (power_function([e, x]) + power_function([e, -x])) / 2
-
-
-# Helper functions
-def factorial(input):
-    temp = input
-    while temp > 1:
-        temp -= 1
-        input *= temp
-    return input
-
-
-# Test
-print(cosh([5])) # 74.2099485248
