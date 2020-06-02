@@ -2,10 +2,10 @@
 # Taylor: cosh(x) = 1 + (x^2/2!) + (x^4/4!) + (x^6/6!) ...
 
 from Power_Function import power_function
+from Constants import e
 
 
 def cosh(args):
-    e = 2.718281828459045 # replace from constant file once created
     x = 0
     if(len(args) == 1):
         x = args[0]
