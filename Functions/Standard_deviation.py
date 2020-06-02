@@ -29,9 +29,5 @@ def total_count(args):
     return s
 
 
-arr = [1,2,3,4,5,6,7,8,9,10]
-print("Computed by numpy:           " + str(np.std(arr)))
-print("Computed by original python: " + str(standard_deviation(arr)))
-
     
 
