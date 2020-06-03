@@ -1,6 +1,7 @@
-import numpy as np
-from Power_Function import power_function
+#Goal: Calculate the standard deviation of a given list
+# Author: Jinchen
 
+from power_function import power_function
 
 def standard_deviation(input):
     count = len(input)

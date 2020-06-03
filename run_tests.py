@@ -1,7 +1,7 @@
 import math
 
 from Logarithm import ln
-from Power_Function import power_function
+from power_function import power_function
 
 PRECISION = 0.00000001
 
