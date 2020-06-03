@@ -102,3 +102,10 @@ def calculate_mean(input):
     for x in input:
         sum += x
     return (sum / len(input))
+
+# Tallies up all values of elements in a list
+def total_count(args):
+    s = 0
+    for i in range(len(args)):
+        s = s + args[i]
+    return s
