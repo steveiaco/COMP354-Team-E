@@ -1,10 +1,10 @@
 # COMP354-Team-E
 
-Behold, ETERNITY.
+Behold, ETERNITY.<br/>
 
-This calculator implements the finest of functions known to human-kind.
+This calculator implements the finest of functions known to human-kind.<br/>
 
-Functions implemented:
+Functions implemented:<br/>
 sin(x)<br/>
 pi^x<br/>
 ln(x)<br/>
