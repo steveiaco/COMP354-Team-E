@@ -86,7 +86,7 @@ def pf_test_integer():
                     return False
     return True
 
-# power function test for decimal cases (problematic)
+# power function test for decimal cases
 def pf_test_decimal():
     print(f'{bcolors.HEADER}pf_decimal test starting...')
     for i in range(0, 10):
