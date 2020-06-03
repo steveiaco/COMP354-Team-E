@@ -2,7 +2,7 @@ from Constants import get_pi
 # Pie Function
 # Using Table Method
 # I have basically created a global variable for PIE and its power
-PIE = get_pi
+PIE = get_pi()
 
 # the index (n) of the dictionary represent  PIE**(10**n)
 PIE_Dictionary = {-5: 1.000011447364379, -4: 1.0001144795408674, -3: 1.001145385339187, -2: 1.0115130699114478,
