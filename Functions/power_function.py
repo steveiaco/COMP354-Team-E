@@ -4,7 +4,6 @@
 
 from auxiliary_functions import floor_function
 from auxiliary_functions import sqrt_function
-from auxiliary_functions import rounding_function
 from auxiliary_functions import absolute_value
 from auxiliary_functions import decimal_to_fraction
 
@@ -33,7 +32,7 @@ def power_function (args):
     
     #Case 4: Power is a decimal
     else:
-        return rounding_function(power_fractional(base, power))
+        return power_fractional(base, power)
 
 def power_integer(base, power):
     #Case 1: Power is a negative integer
@@ -79,7 +78,7 @@ def power_fractional (base, power):
     fraction = decimal_to_fraction(power)
     #Suppose we have a^(b/c), where "a" is negative...
     if (base < 0):
-        #Case 1: "b" is even -> the result is a complex real number
+        #Case 1: "b" is even -> the result is a real number
         #Case 2: "b" is odd and "c" is odd -> the result is a real number
         if (fraction[0] % 2 == 0 or fraction[1] % 2 != 0):
             return -1 * power_fractional(base * -1, power)
