@@ -21,7 +21,7 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-PRECISION = 0.00000001
+PRECISION = 0.0000001
 
 # ln test
 def ln_test():
@@ -41,7 +41,7 @@ def ln_test():
 # sine test
 def sine_test():
     print(f'{bcolors.HEADER}sine test starting...')
-    for i in range(1, 100):
+    for i in range(-10, 10):
         calc = sine([i])
         result = math.sin(i)
         error = round(calc, 10) - round(result, 10)
@@ -56,9 +56,9 @@ def sine_test():
 # cosh test 
 def cosh_test():
     print(f'{bcolors.HEADER}cosh test starting...')
-    for i in range(1, 100):
-        calc = cosh([i])
-        result = math.cosh(i)
+    for i in range(-10, 10):
+        calc = round(cosh([i]), 4)
+        result = round(math.cosh(i), 4)
         error = calc - result
         if error > 0 and error > PRECISION:
             print(f'{bcolors.FAIL}Outside of acceptable range. \n \t cosh({i}) = {calc}. \n \t actual = {result}. \n \t error of: {error}. \n')
