@@ -24,31 +24,6 @@ def sqrt_function(base):
 
     return mid
 
-# Rounds a number to 11 digits (We should revise whether we need this function)
-def rounding_function(number):
-    # Rounds the result to 11 digits after the decimals
-    precision = 0.00000000001
-    result = str(number)
-    first_half = result[: result.find(".")]
-    second_half = result[result.find("."):]
-
-    if (len(second_half) < 13):
-        return number
-
-    precision_factor = second_half[1: 13]
-    second_half = second_half[: 12]
-
-    if (int(precision_factor[11]) < 5):
-        full = float(first_half + second_half)
-    else:
-        value = float(second_half) + precision
-        if (value == 1):
-            full = floor_function(number)
-        else:
-            full = float(first_half) + (float(second_half) + precision)
-
-    return full
-
 # Calculates the absolute value
 def absolute_value(number):
     if (number < 0):
