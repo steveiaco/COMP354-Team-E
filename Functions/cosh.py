@@ -12,7 +12,7 @@ def cosh(args):
 
     # if the correct number of arguments are passed, then continue
     if len(args) == 1:
-        x == args[0]
+        x = args[0]
     else:
         raise Exception(f"Invalid number of arguments, power_function got {len(args)} but expected 1.")
 
