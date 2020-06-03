@@ -1,4 +1,7 @@
-from Power_Function import power_function
+# Goal: Calculate the natural logarithm
+# Author: Steven Iacobellis
+
+from power_function import power_function
 
 #Goal: Calculate the natural logarithm, log base e, of a given input x
 #Method: we use a series based on the area hyperbolic tangent function

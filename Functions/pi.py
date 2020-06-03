@@ -1,4 +1,7 @@
-from Constants import get_pi
+# Goal: Calculate pi to the power of a given variable x
+# Author: Ali
+
+from constants import get_pi
 # Pie Function
 # Using Table Method
 # I have basically created a global variable for PIE and its power
@@ -9,7 +12,7 @@ PIE_Dictionary = {-5: 1.000011447364379, -4: 1.0001144795408674, -3: 1.001145385
                   -1: 1.1212823532318632, 0: 1, 1: PIE, 2: 93648.04747608298, 3: 5.187848314319592e+49}
 
 
-def pie_function(x):
+def pi_function(x):
 
     negative_exponent = False
     if float(x) < 0:

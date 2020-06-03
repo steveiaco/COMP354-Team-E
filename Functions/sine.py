@@ -1,22 +1,13 @@
-#import math
-import Power_Function as Pwr
-from Constants import get_pi
+#Goal: Calculate the sine of a variable x
+# Author: Yongsu
+
+from power_function import power_function
+from constants import get_pi
+from auxiliary_functions import factorial
 """
     Names of functions are "sine" and "factorial"
     Each only takes 1 input which is the number
 """
-
-
-def factorial(number):
-    # factorial by recursion
-    if number < 0:
-        print("factorial is undefined for negative numbers!")
-        return None
-    if number == 1 or number == 0:
-        return 1
-    else:
-        return number*factorial(number-1)
-
 
 def sine(args):
     if len(args) == 1:
@@ -32,7 +23,7 @@ def sine(args):
 
     # using for loop to create summation i=0 to i=79
     for i in range(80):
-        res += (Pwr.power_function([-1, i])) * (Pwr.power_function([num, (2*i+1)])) / (factorial(2*i+1))
+        res += (power_function([-1, i])) * (power_function([num, (2*i+1)])) / (factorial(2*i+1))
     return res
 
 

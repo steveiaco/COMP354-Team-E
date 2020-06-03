@@ -1,5 +1,10 @@
-from Power_Function import power_function
-from Logarithm import ln
+from power_function import power_function
+from log import ln
+from sine import sine
+from cosh import cosh
+from pi import pi_function
+from mean_absolute_deviation import mean_absolute_deviation
+from standard_deviation import standard_deviation
 
 #Placeholder function for the function map
 def ph(args):
@@ -9,20 +14,20 @@ def ph(args):
 
 # Variable which maps the function name to its helper description and function pointer.
 function_map = {
-    'sin': [ph, 'Description placeholder'],
-    'pi^': [ph, 'Description placeholder'],
-    'ln': [ln, 'Description placeholder'],
-    'a^x': [ph, 'Description placeholder'],
-    'mad': [ph, 'Description placeholder'],
-    'stdev': [ph, 'Description placeholder'],
-    'cosh': [ph, 'Description placeholder'],
-    'x^y': [power_function, 'Description placeholder'],
+    'sin': [sine, 'Calculates the sine of an input x.'],
+    'pi^': [pi_function, 'Calculates pi^x for a given input x.'],
+    'ln': [ln, 'Calculates the natural logarithm for an input x.'],
+    'a^x': [ph, 'NOT IMPLEMENTED.'],
+    'mad': [mean_absolute_deviation, 'Calculates the mean absolute deviation for a given input [x,y,z,...].'],
+    'stdev': [standard_deviation, 'Calculates the standard deviation for a given input [x,y,z,...].'],
+    'cosh': [cosh, 'Calculates the hyperbolic cosine for a given input x.'],
+    'x^y': [power_function, 'Calculates the power function for a given base x and power y.'],
 }
 
 def main():
     #List valid inputs
     print('Welcome to ETERNITY')
-    print('Separate function call and arguments by a colon (:)\nSeparate multiple arguments by a single comma (arg1,arg2)')
+    print('Separate function call and arguments by a colon (:)\nSeparate multiple arguments by a single comma .. arg1,arg2\nSample input: stdev:1,2,3')
     print(f'Here are the functions available for use:')
 
     for k,v in function_map.items():

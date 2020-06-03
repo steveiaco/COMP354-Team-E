@@ -1,4 +1,8 @@
-from Power_Function import power_function
+# Goal: contain all functions that generate constant values
+# Author: Steven Iacobellis, co-authored by many
+
+from power_function import power_function
+from auxiliary_functions import factorial
 import math
 
 # Initial values
@@ -14,7 +18,7 @@ def get_pi():
 
         # We iterate for 2 iterations, as Chudnosvky converges very quickly
         for i in range(2):
-            series_sum += (power_function([-1, i]) * math.factorial(6 * i) * (13591409 + (545140134 * i)) ) / (math.factorial(3 * i) * power_function([math.factorial(i),3]) * power_function([640320, 3*i + 1.5]))
+            series_sum += (power_function([-1, i]) * factorial(6 * i) * (13591409 + (545140134 * i)) ) / (factorial(3 * i) * power_function([math.factorial(i),3]) * power_function([640320, 3*i + 1.5]))
 
         pi = 1 / (12 * series_sum)
 
