@@ -57,8 +57,8 @@ def sine_test():
 def cosh_test():
     print(f'{bcolors.HEADER}cosh test starting...')
     for i in range(-10, 10):
-        calc = round(cosh([i]), 4)
-        result = round(math.cosh(i), 4)
+        calc = round(cosh([i]), 10)
+        result = round(math.cosh(i), 10)
         error = calc - result
         if error > 0 and error > PRECISION:
             print(f'{bcolors.FAIL}Outside of acceptable range. \n \t cosh({i}) = {calc}. \n \t actual = {result}. \n \t error of: {error}. \n')
