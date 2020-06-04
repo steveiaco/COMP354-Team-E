@@ -9,8 +9,8 @@ from power_function import power_function
 PIE = get_pi()
 
 # the index (n) of the dictionary represent  PIE**(10**n)
-PIE_Dictionary = {-5: power_function([PIE, 0.00001]), -4: power_function([PIE, 0.0001]), -3: power_function([PIE, 0.001]), -2: power_function([PIE, 0.01]),
-                  -1: power_function([PIE, 0.1]), 0: 1, 1: PIE, 2: power_function([PIE, 10]), 3: power_function([PIE,100])}
+PIE_Dictionary = {-5: 1.000011447364379, -4: 1.0001144795408674, -3: 1.001145385339187, -2: 1.0115130699114478,
+                  -1: 1.1212823532318632, 0: 1, 1: PIE, 2: 93648.04747608298, 3: 5.187848314319592e+49}
 
 
 def pi_function(args):
