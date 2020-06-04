@@ -2,6 +2,7 @@
 # Author: Ali
 
 from constants import get_pi
+from power_function import power_function
 # Pie Function
 # Using Table Method
 # I have basically created a global variable for PIE and its power
@@ -12,7 +13,14 @@ PIE_Dictionary = {-5: 1.000011447364379, -4: 1.0001144795408674, -3: 1.001145385
                   -1: 1.1212823532318632, 0: 1, 1: PIE, 2: 93648.04747608298, 3: 5.187848314319592e+49}
 
 
-def pi_function(x):
+def pi_function(args):
+
+    x = 0
+    # check if
+    if len(args) == 1:
+        x = args[0]
+    else:
+        raise Exception(f"Invalid number of arguments, pie got expected 1 arguments but got {len(args)} arguments.")
 
     negative_exponent = False
     if float(x) < 0:
