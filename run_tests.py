@@ -10,6 +10,7 @@ from mean_absolute_deviation import mean_absolute_deviation
 from standard_deviation import standard_deviation
 from sine import sine
 from cosh import cosh
+from pi import pi_function
 
 class bcolors:
     HEADER = '\033[95m'
@@ -22,6 +23,22 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 PRECISION = 0.0000001
+
+
+# pi test
+def pi_test():
+    print(f'{bcolors.HEADER}pi test starting...')
+    for i in range(-10, 10):
+        calc = pi_function([i])
+        result = (math.pi)**(i)
+        error = calc - result
+        if error > 0 and error > PRECISION:
+            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t ln({i}) = {calc} \n \t actual = {result} \n \t error of: {error} \n')
+            return False
+        elif error < 0 and error < PRECISION:
+            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t ln({i}) = {calc} \n \t actual = {result} \n \t error of: {error} \n')
+            return False
+    return True
 
 # ln test
 def ln_test():
@@ -193,6 +210,7 @@ test_map = {
     'mean_absolute_deviation_decimal': mad_test_decimal,
     'standard_deviation_integer': std_test_integer,
     'standard_deviation_decimal': std_test_decimal,
+    'pi' : pi_test
 }
 
 
