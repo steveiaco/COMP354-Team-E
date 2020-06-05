@@ -17,7 +17,7 @@ function_map = {
     'sin': [sine, 'Calculates the sine of an input x.'],
     'pi^': [pi_function, 'Calculates pi^x for a given input x.'],
     'ln': [ln, 'Calculates the natural logarithm for an input x.'],
-    'a^x': [ph, 'NOT IMPLEMENTED.'],
+    #'a^x': [ph, 'NOT IMPLEMENTED.'],
     'mad': [mean_absolute_deviation, 'Calculates the mean absolute deviation for a given input [x,y,z,...].'],
     'stdev': [standard_deviation, 'Calculates the standard deviation for a given input [x,y,z,...].'],
     'cosh': [cosh, 'Calculates the hyperbolic cosine for a given input x.'],
