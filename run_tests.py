@@ -32,27 +32,28 @@ def pi_test():
         calc = pi_function([i])
         result = (math.pi)**(i)
         error = calc - result
-        if error > 0 and error > PRECISION:
-            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t ln({i}) = {calc} \n \t actual = {result} \n \t error of: {error} \n')
+
+        error = abs(error)
+
+        if error > PRECISION:
+            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t pi({i}) = {calc} \n \t actual = {result} \n \t error of: {error} \n')
             return False
-        elif error < 0 and error < PRECISION:
-            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t ln({i}) = {calc} \n \t actual = {result} \n \t error of: {error} \n')
-            return False
+
     return True
 
 # ln test
 def ln_test():
     print(f'{bcolors.HEADER}ln test starting...')
-    for i in range(100000, 100):
+    for i in range(1, 250):
         calc = ln([i])
         result = math.log(i)
         error = calc - result
-        if error > 0 and error > PRECISION:
+
+        error = abs(error)
+        if error > PRECISION:
             print(f'{bcolors.FAIL}Outside of acceptable range. \n \t ln({i}) = {calc} \n \t actual = {result} \n \t error of: {error} \n')
             return False
-        elif error < 0 and error < PRECISION:
-            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t ln({i}) = {calc} \n \t actual = {result} \n \t error of: {error} \n')
-            return False
+
     return True
 
 # sine test
@@ -62,11 +63,11 @@ def sine_test():
         calc = sine([i])
         result = math.sin(i)
         error = round(calc, 10) - round(result, 10)
-        if error > 0 and error > PRECISION:
+
+        error = abs(error)
+
+        if error > PRECISION:
                 print(f'{bcolors.FAIL}Outside of acceptable range. \n \t sine({i}) = {calc}. \n \t actual = {result}. \n \t error of: {error}. \n')
-                return False
-        elif error < 0 and  error < PRECISION:
-                print(f'{bcolors.FAIL}Outside of acceptable range. \n \t sine({i}) = {calc}. \n \t actual = {result}. \n \t error of: {error} \n')
                 return False
     return True
 
@@ -77,12 +78,13 @@ def cosh_test():
         calc = round(cosh([i]), 10)
         result = round(math.cosh(i), 10)
         error = calc - result
-        if error > 0 and error > PRECISION:
+
+        error = abs(error)
+
+        if error > PRECISION:
             print(f'{bcolors.FAIL}Outside of acceptable range. \n \t cosh({i}) = {calc}. \n \t actual = {result}. \n \t error of: {error}. \n')
             return False
-        elif error < 0 and error < PRECISION:
-            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t cosh({i}) = {calc}. \n \t actual = {result}. \n \t error of: {error}. \n')
-            return False
+
     return True
 
 
@@ -95,10 +97,10 @@ def pf_test_integer():
                 calc = round(power_function([i, j]), 10)
                 result = round(math.pow(i, j), 10)
                 error = calc - result
-                if error > 0 and error > PRECISION: 
-                    print(f'{bcolors.FAIL}Outside of acceptable range. \n \t power_function({i},{j}) = {calc}. \n \t actual: {result}. \n \t error of: {error} \n')
-                    return False
-                elif error < 0 and error < PRECISION:
+
+                error = abs(error)
+
+                if error > PRECISION:
                     print(f'{bcolors.FAIL}Outside of acceptable range. \n \t power_function({i},{j}) = {calc}. \n \t actual: {result}. \n \t error of: {error} \n')
                     return False
     return True
@@ -115,12 +117,13 @@ def pf_test_decimal():
                 calc = round(power_function([i, j]), 3)
                 result = round(math.pow(i, j), 3)
                 error = calc - result
-                if error > 0 and error > PRECISION:
+
+                error = abs(error)
+
+                if error > PRECISION:
                     print(f'{bcolors.FAIL}Outside of acceptable range. \n \t power_function({i},{j}):{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
                     return False
-                elif error < 0 and error < PRECISION:
-                    print(f'{bcolors.FAIL}Outside of acceptable range. \n \t power_function({i},{j}):{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
-                    return False
+
     return True
 
 # mean absolute deviation test for integer cases
@@ -134,10 +137,10 @@ def mad_test_integer():
         calc = round(mean_absolute_deviation(list), 10)
         result = round(pandas.Series(list).mad(), 10)
         error = calc - result
-        if error > 0 and error > PRECISION:
-            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t mean_absolute_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
-            return False
-        elif error < 0 and error < PRECISION:
+
+        error = abs(error)
+
+        if error > PRECISION:
             print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t mean_absolute_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
             return False
     return True
@@ -153,10 +156,10 @@ def mad_test_decimal():
         calc = round(mean_absolute_deviation(list), 10)
         result = round(pandas.Series(list).mad(), 10)
         error = calc - result
-        if error > 0 and error > PRECISION:
-            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t mean_absolute_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
-            return False
-        elif error < 0 and error < PRECISION:
+
+        error = abs(error)
+
+        if error > PRECISION:
             print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t mean_absolute_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
             return False
     return True
@@ -172,10 +175,10 @@ def std_test_integer():
         calc = round(standard_deviation(list), 10)
         result = round(statistics.pstdev(list), 10)
         error = calc - result
-        if error > 0 and error > PRECISION:
-            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t standard_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
-            return False
-        elif error < 0 and error < PRECISION:
+
+        error = abs(error)
+
+        if error > PRECISION:
             print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t standard_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
             return False
     return True
@@ -191,12 +194,13 @@ def std_test_decimal():
         calc = round(standard_deviation(list), 10)
         result = round(statistics.pstdev(list), 10)
         error = calc - result
-        if error > 0 and error > PRECISION:
+
+        error = abs(error)
+
+        if error > PRECISION:
             print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t standard_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
             return False
-        elif error < 0 and error < PRECISION:
-            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t standard_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
-            return False
+
     return True
 
 # Define all tests and their names
