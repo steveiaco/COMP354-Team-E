@@ -36,12 +36,3 @@ def get_e():
         e = series_sum
 
     return e
-
-def main():
-
-    print(get_e())
-    print(get_e())
-
-
-if __name__ == "__main__":
-    main()
