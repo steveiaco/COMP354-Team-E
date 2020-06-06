@@ -8,6 +8,7 @@ import math
 # Initial values
 pi = 0
 e = 0
+ln10 = 0
 
 # Calculate pi using the Chudnovsky algorithm
 def get_pi():
@@ -37,11 +38,15 @@ def get_e():
 
     return e
 
-def main():
+def get_ln10():
+    global ln10
 
-    print(get_e())
-    print(get_e())
+    if ln10 == 0:
+        # if the ln(10) isn't already calculated, then calculate it for the first time and store it for the duration of runtime
+        sum = 0
+        for i in range(1000):
+            sum += (1 / (2 * i + 1)) * power_function([(10 - 1) / (10 + 1), 2 * i + 1])
 
+        ln10 = 2 * sum
 
-if __name__ == "__main__":
-    main()
+    return ln10
