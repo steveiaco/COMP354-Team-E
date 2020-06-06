@@ -22,7 +22,7 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-PRECISION = 0.0000001
+PRECISION = 0.000000001
 
 
 # pi test
@@ -44,7 +44,7 @@ def pi_test():
 # ln test
 def ln_test():
     print(f'{bcolors.HEADER}ln test starting...')
-    for i in range(1, 250):
+    for i in range(1, 10000):
         calc = ln([i])
         result = math.log(i)
         error = calc - result
