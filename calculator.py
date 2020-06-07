@@ -6,7 +6,15 @@ from pi import pi_function
 from mean_absolute_deviation import mean_absolute_deviation
 from standard_deviation import standard_deviation
 
-#Placeholder function for the function map
+# Class used for usage history
+class UsagePoint:
+    def __init__(self, function_called, input, output):
+        self.function_called = function_called
+        self.input = input
+        self.output = output
+
+
+# Placeholder function for the function map
 def ph(args):
     #do nothing
     print(f'Arguments received : {args}')
@@ -28,17 +36,28 @@ def main():
     #List valid inputs
     print('Welcome to ETERNITY')
     print('Separate function call and arguments by a colon (:)\nSeparate multiple arguments by a single comma .. arg1,arg2\nSample input: stdev:1,2,3')
+    print('Print out usage history by inputting "history".')
     print(f'Here are the functions available for use:')
 
     for k,v in function_map.items():
         print(f'{k} : {v[1]}')
     print()
 
+    # Create list used to store all previous function results
+    usage_history = []
+
     # Loop until the user exits the script
     while True:
         user_input = input("Enter expression: ").split(':')
 
-        if len(user_input) == 2:
+        if len(user_input) == 1 and user_input[0] == 'history':
+            if(len(usage_history) > 0):
+                for history in usage_history:
+                    print(f"Function called: {history.function_called}, Input: {history.input}, Output: {history.output}")
+            else:
+                print("No history to show")
+
+        elif len(user_input) == 2:
             function = user_input[0]
             arguments = user_input[1].split(',')
 
@@ -52,12 +71,15 @@ def main():
             # Check if the function specified exists in the function map, if it does, call the mapped function with the provided arguments
             if function in function_map.keys():
                 try:
-                    print(f'Result: {function_map[function][0](arguments)}')
+                    result = function_map[function][0](arguments)
+
+                    usage_history.append(UsagePoint(function, arguments, result))
+
+                    print(f'Result: {result}')
                 except Exception as e:
                     print(str(e))
             else:
                 print('Invalid.')
-
         else:
             print('Invalid input.')
 
