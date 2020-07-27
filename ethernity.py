@@ -1,4 +1,14 @@
+from Controllers.calculator_controller import CalculatorController
+from Views.calculator_view import CalculatorView
+
 def main():
+
+    # Instantiate the controller and view
+    controller = CalculatorController()
+    view = CalculatorView(controller)
+
+    # Subscribe the view as an observer of the controller
+    controller.attach(view)
 
 
 if __name__ == "__main__":
