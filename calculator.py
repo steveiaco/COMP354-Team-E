@@ -6,6 +6,7 @@ from pi import pi_function
 from mean_absolute_deviation import mean_absolute_deviation
 from standard_deviation import standard_deviation
 
+
 # Class used for usage history
 class UsagePoint:
     def __init__(self, function_called, input, output):
@@ -19,6 +20,7 @@ def ph(args):
     #do nothing
     print(f'Arguments received : {args}')
     return
+
 
 # Variable which maps the function name to its helper description and function pointer.
 function_map = {
@@ -51,7 +53,7 @@ def main():
         user_input = input("Enter expression: ").split(':')
 
         if len(user_input) == 1 and user_input[0] == 'history':
-            if(len(usage_history) > 0):
+            if len(usage_history) > 0 :
                 for history in usage_history:
                     print(f"Function called: {history.function_called}, Input: {history.input}, Output: {history.output}")
             else:
@@ -72,7 +74,6 @@ def main():
             if function in function_map.keys():
                 try:
                     result = function_map[function][0](arguments)
-
                     usage_history.append(UsagePoint(function, arguments, result))
 
                     print(f'Result: {result}')
