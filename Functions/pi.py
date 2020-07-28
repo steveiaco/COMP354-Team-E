@@ -20,7 +20,7 @@ def pi_function(args):
     if len(args) == 1:
         x = args[0]
     else:
-        raise Exception(f"Invalid number of arguments, pie got expected 1 arguments but got {len(args)} arguments.")
+        raise Exception(f"Invalid number of arguments, pie expected 1 argument but got {len(args)} arguments.")
 
     negative_exponent = False
     if float(x) < 0:
