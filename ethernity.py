@@ -10,6 +10,7 @@ def main():
     # Subscribe the view as an observer of the controller
     controller.attach(view)
 
+    view.listen_to_user_input()
 
 if __name__ == "__main__":
     main()

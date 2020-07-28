@@ -1,9 +1,9 @@
 #Goal: Calculate the sine of a variable x
 # Author: Yongsu
 
-from power_function import power_function
-from constants import get_pi
-from auxiliary_functions import factorial
+from Functions.power_function import power_function
+from Functions.constants import get_pi
+from Functions.auxiliary_functions import factorial
 """
     Names of functions are "sine" and "factorial"
     Each only takes 1 input which is the number

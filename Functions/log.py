@@ -1,8 +1,8 @@
 # Goal: Calculate the natural logarithm
 # Author: Steven Iacobellis
 
-from power_function import power_function
-from constants import get_ln10
+from Functions.power_function import power_function
+from Functions.constants import get_ln10
 
 # Precalculated ln(10)
 ln10 = 0

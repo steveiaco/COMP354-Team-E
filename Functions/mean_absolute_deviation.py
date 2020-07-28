@@ -5,8 +5,8 @@
 
 # Author: Sean
 
-from auxiliary_functions import absolute_value
-from auxiliary_functions import calculate_mean
+from Functions.auxiliary_functions import absolute_value
+from Functions.auxiliary_functions import calculate_mean
 
 
 # Primary Algoirthm

@@ -2,10 +2,10 @@
 #Handling: Does not compute complex numbers 
 #Author: Amina
 
-from auxiliary_functions import floor_function
-from auxiliary_functions import sqrt_function
-from auxiliary_functions import absolute_value
-from auxiliary_functions import decimal_to_fraction
+from Functions.auxiliary_functions import floor_function
+from Functions.auxiliary_functions import sqrt_function
+from Functions.auxiliary_functions import absolute_value
+from Functions.auxiliary_functions import decimal_to_fraction
 
 def power_function (args):
     base = 0

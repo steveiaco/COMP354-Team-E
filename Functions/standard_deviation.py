@@ -1,8 +1,8 @@
 #Goal: Calculate the standard deviation of a given list
 # Author: Jinchen
 
-from power_function import power_function
-from auxiliary_functions import total_count
+from Functions.power_function import power_function
+from Functions.auxiliary_functions import total_count
 
 def standard_deviation(args):
     count = len(args)

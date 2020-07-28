@@ -1,8 +1,8 @@
 # Goal: Calculate the hyperbolic cosine of a given variable x
 # Author: Wayne
 
-from power_function import power_function
-from constants import get_e
+from Functions.power_function import power_function
+from Functions.constants import get_e
 
 # Goal: calculate cosh(x)
 # Method: exponential, cosh(x) = (e^x + e^(-x))/2
