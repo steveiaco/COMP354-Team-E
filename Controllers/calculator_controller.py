@@ -38,36 +38,16 @@ class CalculatorController:
     # Functions called by the View
     ####
 
-    def handle_args(self, args):
+    def get_available_functions(self):
+        return copy.deepcopy(self.function_map)
 
-        # Split function from it's arguments
-        user_input = args.split(':')
-
-        if len(user_input) == 1 and user_input[0] == 'history':
-            return self.__generate_compute_history()
-
-        elif len(user_input) == 2:
-            function = user_input[0]
-            arguments = user_input[1].split(',')
-            self.__parse_function_and_dispatch(function, arguments)
-
-        else:
-            print('Invalid input.')
-
-        # Notify observers that there has been a change in the Models
-        self.notify()
-
-    def generate_function_instructions(self):
-        return "placeholder"
-
-    ####
-    # Helper functions
-    ####
-
-    def __generate_compute_history(self):
+    def get_compute_history(self):
         return copy.deepcopy(self.compute_history)
 
-    def __parse_function_and_dispatch(self, function, arguments):
+    def get_compute_history_size(self):
+        return len(self.compute_history)
+
+    def parse_function_and_dispatch(self, function, arguments):
 
         # Try converting the list of strings into a list of numbers
         try:
@@ -85,6 +65,18 @@ class CalculatorController:
                 print(str(e))
         else:
             self.compute_history.append(ComputeResult(function, arguments, None, True, "Invalid function name"))
+
+        # Notify the observers that the model has changed
+        self.notify()
+
+    def invalid_user_input(self, input):
+        self.compute_history.append(ComputeResult(input, None, None, True, "Invalid user input"))
+
+        # Notify the observers that the model has changed
+        self.notify()
+    ####
+    # Helper functions
+    ####
 
     ####
     # Observer functions

@@ -23,24 +23,59 @@ class CalculatorView:
               'arg2\nSample input: stdev:1,2,3')
         print('Print out usage history by inputting "history".')
         print(f'\nHere are the functions available for use:')
-        print(self.controller.generate_function_instructions())
+
+        # Print function info
+        functions = self.controller.get_available_functions()
+
+        for k,v in functions.items():
+            print(f'{k} : {v[1]}')
+
+        #
+        print(f"\nNumber of operations performed: {self.controller.get_compute_history_size()}\n")
 
     def listen_to_user_input(self):
 
         self.update()
         # Loop until the user exits the script
         while True:
-            # todo fix history
-            returned = self.controller.handle_args(input("Enter expression: "))
+            # Get input from user
+            args = input("Enter expression: ")
+
+            # Split function from it's arguments
+            user_input = args.split(':')
+
+            if len(user_input) == 1 and user_input[0] == 'history':
+                self.print_history()
+
+            elif len(user_input) == 2:
+                function = user_input[0]
+                arguments = user_input[1].split(',')
+                self.controller.parse_function_and_dispatch(function, arguments)
+
+            else:
+                self.controller.invalid_user_input(user_input)
+
+    def print_history(self):
+        history = self.controller.get_compute_history()
+
+        print("\nOperation history:")
+        for h in history:
+            self.format_and_print_history_point(h)
+        input("\nPress enter to continue...")
+        self.update()
+
+    @staticmethod
+    def format_and_print_history_point(h):
+        if h.error:
+            print(f"{h.function_called}:{h.input} {h.error_message}")
+        else:
+            print(f"{h.function_called}:{h.input} = {h.output}")
 
     # Observer function used to update the view whenever there is a change in the Model / Controller
     def update(self):
         self.generate_cli()
 
         if len(self.controller.compute_history) > 0:
-            last_operation = self.controller.compute_history[-1]
-
-            if last_operation.error:
-                print(f"{last_operation.function_called}:{last_operation.input} {last_operation.error_message}")
-            else:
-                print(f"{last_operation.function_called}:{last_operation.input} = {last_operation.output}")
+            print("Last operation:")
+            self.format_and_print_history_point(self.controller.compute_history[-1])
+            print()
