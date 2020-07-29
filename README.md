@@ -27,3 +27,7 @@ The recommended IDE is PyCharm as it enables the user to set the root source fil
 6. Right click the COMP354-Team-E folder in the PyCharm project explorer, "Mark Directory As"->"Sources Root"
 6. Right click the Functions folder (under the COMP354-Team-E folder) in the PyCharm project explorer, "Mark Directory As"->"Sources Root"
 7. Click "Run"->"Run...", setup your Python configuration, and choose the calculator.py to run the project
+
+Running with CLI (allows the interface to be cleared with each interaction):
+
+1. Run "py eternity.py" in the COMP354-Team-E folder

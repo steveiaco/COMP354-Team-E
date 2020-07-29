@@ -1,8 +1,8 @@
 # Goal: Calculate pi to the power of a given variable x
 # Author: Ali
 
-from constants import get_pi
-from power_function import power_function
+from Functions.constants import get_pi
+
 # Pie Function
 # Using Table Method
 # I have basically created a global variable for PIE and its power

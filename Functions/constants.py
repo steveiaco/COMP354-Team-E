@@ -1,8 +1,8 @@
 # Goal: contain all functions that generate constant values
 # Author: Steven Iacobellis, co-authored by many
 
-from power_function import power_function
-from auxiliary_functions import factorial
+from Functions.power_function import power_function
+from Functions.auxiliary_functions import factorial
 import math
 
 # Initial values
