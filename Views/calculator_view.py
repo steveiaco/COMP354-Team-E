@@ -21,6 +21,7 @@ class CalculatorView:
         print("Usage instructions:")
         print('Separate function call and arguments by a colon (:)\nSeparate multiple arguments with commas .. arg1,'
               'arg2\nSample input: stdev:1,2,3')
+        print('To indicate additional precision (up to 15), you can add a second colon (:) followed by a number between 1 and 15.\nSample input: ln:2:5')
         print('Print out usage history by inputting "history".')
         print(f'\nHere are the functions available for use:')
 
@@ -51,6 +52,12 @@ class CalculatorView:
                 function = user_input[0]
                 arguments = user_input[1].split(',')
                 self.controller.parse_function_and_dispatch(function, arguments)
+
+            elif len(user_input) == 3:
+                function = user_input[0]
+                arguments = user_input[1].split(',')
+                precision = user_input[2]
+                self.controller.parse_function_and_dispatch(function, arguments, precision)
 
             else:
                 self.controller.invalid_user_input(user_input)

@@ -47,7 +47,7 @@ class CalculatorController:
     def get_compute_history_size(self):
         return len(self.compute_history)
 
-    def parse_function_and_dispatch(self, function, arguments):
+    def parse_function_and_dispatch(self, function, arguments, precision = 0):
 
         # Try converting the list of strings into a list of numbers
         try:
@@ -60,6 +60,9 @@ class CalculatorController:
         if function in self.function_map.keys():
             try:
                 result = self.function_map[function][0](arguments)
+                # Check if user has specified a precision 
+                if int(precision) > 0 and int(precision) <= 15:
+                    result = round(result, int(precision))
                 self.compute_history.append(ComputeResult(function, arguments, result, False, None))
             except Exception as e:
                 print(str(e))
