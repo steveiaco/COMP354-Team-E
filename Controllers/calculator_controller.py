@@ -26,7 +26,7 @@ class CalculatorController:
         self.function_map = {
             'sin': [sine, 'Calculates the sine of an input x.'],
             'pi^': [pi_function, 'Calculates pi^x for a given input x.'],
-            'ln': [ln, 'Calculates the natural logarithm for an input x.'],
+            'ln': [ln, 'Calculates the natural logarithm for an input x, (base b can be optionally specified). [x,b]'],
             # 'a^x': [ph, 'NOT IMPLEMENTED.'],
             'mad': [mean_absolute_deviation, 'Calculates the mean absolute deviation for a given input [x,y,z,...].'],
             'stdev': [standard_deviation, 'Calculates the standard deviation for a given input [x,y,z,...].'],
