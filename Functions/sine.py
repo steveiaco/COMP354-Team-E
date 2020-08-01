@@ -4,17 +4,17 @@
 from Functions.power_function import power_function
 from Functions.constants import get_pi
 from Functions.auxiliary_functions import factorial
-from Functions.auxiliary_functions import to_degrees
-"""
-    Names of functions are "sine" and "factorial"
-    Each only takes 1 input which is the number
-"""
+from Functions.auxiliary_functions import to_radians
 
+# Instructions (example input = 5):
+# Enter: "sin:5" default considers input as radians
+# Enter: "sin:5,0" or "sin:5,rad" considers input as radians
+# Enter: "sin:5,1" or "sin:5,deg" considers input as degrees
 def sine(args):
-    if len(args) == 1 or (len(args) == 2 and (args[1] == "deg" or "1")):
+    if len(args) == 1 or (len(args) == 2 and (args[1] == "rad" or args[1] == 0)):
         num = args[0]
-    elif len(args) == 2 and (args[1] == "rad" or args[1] == "0"):
-        num = to_degrees(args[0])
+    elif len(args) == 2 and (args[1] == "deg" or args[1] == 1):
+        num = to_radians(args[0])
     else:
         raise Exception("Invalid input: sine takes 1 input which is the number in degrees, "
                         "or 2 inputs which is the number and whether the number is in radians (0) or degrees (1).")

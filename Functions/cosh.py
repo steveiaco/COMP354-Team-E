@@ -7,14 +7,18 @@ from Functions.auxiliary_functions import to_radians
 
 # Goal: calculate cosh(x)
 # Method: exponential, cosh(x) = (e^x + e^(-x))/2
+# Instructions (example input = 5):
+# Enter: "cosh:5" default considers input as radians
+# Enter: "cosh:5,0" or "cosh:5,rad" considers input as radians
+# Enter: "cosh:5,1" or "cosh:5,deg" considers input as degrees
 def cosh(args):
     x = 0
     e = get_e()
 
-    if len(args) == 1 or (len(args) == 2 and (args[1] == 0 or args[1] == "rad")):
+    if len(args) == 1 or (len(args) == 2 and (args[1] == "rad" or args[1] == 0)):
         x = args[0]
         return (power_function([e, x]) + power_function([e, -x])) / 2
-    elif len(args) == 2 and (args[1] == 1 or args[1] == "deg"):
+    elif len(args) == 2 and (args[1] == "deg" or args[1] == 1):
         x = to_radians(args[0])
         return (power_function([e, x]) + power_function([e, -x])) / 2
     else:
