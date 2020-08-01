@@ -8,7 +8,7 @@ class CalculatorView:
 
     def generate_cli(self):
         # todo: find a better way to clear the command prompt
-        os.system("cls")
+        #os.system("cls")
 
         # Print ASCII logo
         print(" ______ ______ ______  ______  __   __  __  ______ __  __    ")
@@ -41,26 +41,40 @@ class CalculatorView:
         while True:
             # Get input from user
             args = input("Enter expression: ")
-
-            # Split function from it's arguments
-            user_input = args.split(':')
-
-            if len(user_input) == 1 and user_input[0] == 'history':
-                self.print_history()
-
-            elif len(user_input) == 2:
-                function = user_input[0]
-                arguments = user_input[1].split(',')
-                self.controller.parse_function_and_dispatch(function, arguments)
-
-            elif len(user_input) == 3:
-                function = user_input[0]
-                arguments = user_input[1].split(',')
-                precision = user_input[2]
-                self.controller.parse_function_and_dispatch(function, arguments, precision)
+            if ("+" in args) or ("-" in args) or ("*" in args) or ("/" in args):
+                if "+" in args:
+                    argsList = args.split("+")
+                    self.arith_compute(argsList, "+")
+                elif "-" in args:
+                    argsList = args.split("-")
+                    self.arith_compute(argsList, "-")
+                elif "*" in args:
+                    argsList = args.split("*")
+                    self.arith_compute(argsList, "*")
+                elif "/" in args:
+                    argsList = args.split("/")
+                    self.arith_compute(argsList, "/")
 
             else:
-                self.controller.invalid_user_input(user_input)
+                # Split function from it's arguments
+                user_input = args.split(':')
+
+                if len(user_input) == 1 and user_input[0] == 'history':
+                    self.print_history()
+
+                elif len(user_input) == 2:
+                    function = user_input[0]
+                    arguments = user_input[1].split(',')
+                    self.controller.parse_function_and_dispatch(function, arguments)
+
+                elif len(user_input) == 3:
+                    function = user_input[0]
+                    arguments = user_input[1].split(',')
+                    precision = user_input[2]
+                    self.controller.parse_function_and_dispatch(function, arguments, precision)
+
+                else:
+                    self.controller.invalid_user_input(user_input)
 
     def print_history(self):
         history = self.controller.get_compute_history()
@@ -74,7 +88,20 @@ class CalculatorView:
     @staticmethod
     def format_and_print_history_point(h):
         if h.error:
-            print(f"{h.function_called}:{h.input} {h.error_message}")
+            if h.function_called2 is not None:
+                print(f"{h.function_called}:{h.input} {h.operator} {h.function_called2}:{h.input2} {h.error_message}")
+            else:
+                print(f"{h.function_called}:{h.input} {h.error_message}")
+        elif h.function_called2 is not None:
+            if "+" in h.operator:
+                finalres = h.output + h.output2
+            elif "-" in h.operator:
+                finalres = h.output - h.output2
+            elif "*" in h.operator:
+                finalres = h.output * h.output2
+            elif "/" in h.operator:
+                finalres = h.output / h.output2
+            print(f"{h.function_called}:{h.input} {h.operator} {h.function_called2}:{h.input2} = {finalres}")
         else:
             print(f"{h.function_called}:{h.input} = {h.output}")
 
@@ -86,3 +113,30 @@ class CalculatorView:
             print("Last operation:")
             self.format_and_print_history_point(self.controller.compute_history[-1])
             print()
+
+    def arith_compute(self, argsList, operator):
+        if len(argsList) != 2:
+            print("invalid input: too many terms")
+        arg0 = argsList[0]
+        arg0List = arg0.split(':')
+        precision0 = 0
+        if len(arg0List) == 3:
+            precision0 = arg0List[2]
+        arg0Function = arg0List[0]
+        arg0Arguments = arg0List[1].split(',')
+
+        arg1 = argsList[1]
+        arg1List = arg1.split(':')
+        precision1 = 0
+        if len(arg0List) == 3:
+            precision1 = arg1List[2]
+        arg1Function = arg1List[0]
+        arg1Arguments = arg1List[1].split(',')
+
+        # should be space on both sides
+        if (arg0Arguments[-1][-1] != " ") or (arg1Function[0] != " "):
+            self.compute_history.append(ComputeResult(function, arguments, None, True, "Invalid arguments", None,
+                                                      None, None, None))
+        arg1Function = arg1Function[1:len(arg1Function)]
+        self.controller.arith_parse(arg0Function, arg0Arguments, precision0, arg1Function, arg1Arguments, precision1,
+                                    operator)
