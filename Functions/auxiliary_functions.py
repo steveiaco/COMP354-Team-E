@@ -1,3 +1,4 @@
+from Functions.constants import get_pi
 
 # Calculates the floor of a decimal
 def floor_function(power):
@@ -84,3 +85,11 @@ def total_count(args):
     for i in range(len(args)):
         s = s + args[i]
     return s
+
+# Converts degree to radians
+def to_radians(degrees):
+    return degrees * (get_pi()/180)
+
+# Converts radians to degrees
+def to_degrees(radians):
+    return radians * (180/get_pi())
