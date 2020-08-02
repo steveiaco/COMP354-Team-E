@@ -21,6 +21,7 @@ class CalculatorView:
         print("Usage instructions:")
         print('Separate function call and arguments by a colon (:)\nSeparate multiple arguments with commas .. arg1,'
               'arg2\nSample input: stdev:1,2,3')
+        print('For arithmetic operation, space is required on both sides of operator\nSample input: sin:10 + cosh:10')
         print('To indicate additional precision (up to 15), you can add a second colon (:) followed by a number between 1 and 15.\nSample input: ln:2:5')
         print('Print out usage history by inputting "history".')
         print(f'\nHere are the functions available for use:')
