@@ -1,5 +1,6 @@
 #Goal: Calculate the specified power of a specified base
 #Handling: Does not compute complex numbers 
+#Instructions: Enter "0" as the third argument of the power function to obtain a fractional result
 #Author: Amina
 
 from Functions.auxiliary_functions import floor_function
@@ -11,12 +12,21 @@ def power_function (args):
     base = 0
     power = 0
 
-    #If the right number of arguments are passed, then continue
+    #If two arguments are passed, the result will be an integer or a decimal
     if(len(args) == 2):
         base = args[0]
         power = args[1]
+        conversion = "decimal"
+    #If three arguments are passed, where the third argument is a 0, the result will be an integer or a fraction
+    elif(len(args) == 3):
+        if (args[2] == 0): 
+            base = args[0]
+            power = args[1]
+            conversion = "fraction"
+        else: 
+            raise Exception(f"Invalid third argument, power_function got {str(args[2])} but expected 0.")
     else:
-        raise Exception(f"Invalid number of arguments, power_function got {len(args)} but expected 2.")
+        raise Exception(f"Invalid number of arguments, power_function got {len(args)} but expected 2 or 3.")
   
     #Case 1: Power is equal to 0
     if (power == 0):
@@ -28,11 +38,28 @@ def power_function (args):
         
     #Case 3: Power is an integer neither equal to 0 nor to 1
     elif (floor_function(power) == power):
-        return power_integer(base, power)
+        #Fractional result
+        if (conversion == "fraction"):
+            initial_result = power_integer(base, power)
+            if (initial_result != floor_function(initial_result)):
+                final_result = decimal_to_fraction(initial_result)
+                return str(final_result[0]) + "/" + str(final_result[1])
+            else:
+                return initial_result
+        #Decimal result
+        else:
+            return power_integer(base, power)
     
     #Case 4: Power is a decimal
     else:
-        return power_fractional(base, power)
+        #Fractional result
+        if (conversion == "fraction"):
+            initial_result = power_fractional(base, power)
+            final_result = decimal_to_fraction(initial_result)
+            return str(final_result[0]) + "/" + str(final_result[1])
+        #Decimal result
+        else:
+            return power_fractional(base, power)
 
 def power_integer(base, power):
     #Case 1: Power is a negative integer
