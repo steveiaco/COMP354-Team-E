@@ -31,7 +31,7 @@ class CalculatorController:
             'mad': [mean_absolute_deviation, 'Calculates the mean absolute deviation for a given input [x,y,z,...].'],
             'stdev': [standard_deviation, 'Calculates the standard deviation for a given input [x,y,z,...].'],
             'cosh': [cosh, 'Calculates the hyperbolic cosine for a given input x. \n\t\tInstructions: Let x be a number. If input is radians enter "cosh:x,0". If input is degrees enter "cosh:x,1".'],
-            'x^y': [power_function, 'Calculates the power function for a given base x and power y.'],
+            'x^y': [power_function, 'Calculates the power function for a given base x and power y. \n\t\tInstructions: Call the function then input the power and the base as "x^y:power,base". For a fractional result, input 0 as a third argument.'],
         }
 
     ####
