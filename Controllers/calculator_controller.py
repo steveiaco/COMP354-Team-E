@@ -24,13 +24,13 @@ class CalculatorController:
 
         # Variable which maps the function name to its helper description and function pointer.
         self.function_map = {
-            'sin': [sine, 'Calculates the sine of an input x.'],
+            'sin': [sine, 'Calculates the sine of an input x.\n\t\tInstructions: Let x be a number. If input is radians enter "sin:x,0". If input is degrees enter "sin:x,1".'],
             'pi^': [pi_function, 'Calculates pi^x for a given input x.'],
             'ln': [ln, 'Calculates the natural logarithm for an input x, (base b can be optionally specified). [x,b]'],
             # 'a^x': [ph, 'NOT IMPLEMENTED.'],
             'mad': [mean_absolute_deviation, 'Calculates the mean absolute deviation for a given input [x,y,z,...].'],
             'stdev': [standard_deviation, 'Calculates the standard deviation for a given input [x,y,z,...].'],
-            'cosh': [cosh, 'Calculates the hyperbolic cosine for a given input x.'],
+            'cosh': [cosh, 'Calculates the hyperbolic cosine for a given input x. \n\t\tInstructions: Let x be a number. If input is radians enter "cosh:x,0". If input is degrees enter "cosh:x,1".'],
             'x^y': [power_function, 'Calculates the power function for a given base x and power y.'],
         }
 
