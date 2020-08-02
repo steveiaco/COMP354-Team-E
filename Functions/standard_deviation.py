@@ -6,10 +6,10 @@ from Functions.auxiliary_functions import total_count
 
 
 def standard_deviation(args):
-    # helper function that returns a list storing each valie - mean
+    # helper function that returns a list storing each value - mean
     def helper(arg_list, length):
         # compute mean
-        mean = total_count(arg_list) / count
+        mean = total_count(arg_list) / length
         # a new list stores the values of each element - mean
         args_new = []
         for i in range(length):
@@ -20,25 +20,29 @@ def standard_deviation(args):
         return args_new
 
     count = len(args)
-    if count > 0:
-        print('Please choose the type of standard deviation')
-        print('1. Population Standard Deviation')
-        print('2. Sample Standard Deviation')
-        option = input("Enter option: ")
-        if option == '1':
-            if count == 1:
+    if count > 1:
+        # Get the last element in the list
+        flag = args[-1]
+        # population stdev
+        if flag == 0.0:
+            if count == 2:
                 return 0
             else:
+                args = args[:-1]
+                count -= 1
                 args_sqr = helper(args, count)
                 return power_function([total_count(args_sqr) / count, 0.5])
-        if option == '2':
+        # sample stdev
+        if flag == 1.0:
             # Sample stdev requires at least 2 numbers
-            if count == 1:
-                raise TypeError('Invalid Argument !')
+            if count == 2:
+                raise TypeError('Sample Standard Deviation requires at least 2 numbers !')
             else:
+                args = args[:-1]
+                count -= 1
                 args_sqr = helper(args, count)
-                return power_function([total_count(args_sqr) / (count-1), 0.5])
+                return power_function([total_count(args_sqr) / (count - 1), 0.5])
         else:
-            raise TypeError('Invalid Argument !')
+            raise TypeError('Please specify the type of standard deviation !')
     else:
         raise TypeError('Invalid Argument !')
