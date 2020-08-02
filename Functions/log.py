@@ -12,13 +12,36 @@ ln10 = 0
 def ln(args):
 
     x = 0
+    base = 0
+    use_base = False
 
-    # If the right number of arguments are passed, then continue
+    # If one argument is passed, then only an operand is passed, and we assume a base of e.
     if len(args) == 1:
         x = args[0]
+    # If two arguments are passed, then an operand and a base is defined.
+    elif len(args) == 2:
+        x = args[0]
+        base = args[1]
+        use_base = True
+        if base <= 0 or base == 1:
+            raise Exception(f"Base of the logarithm must be b > 0 and b != 1, got {base}.")
     else:
-        raise Exception(f"Invalid number of arguments, ln got {len(args)} but expected 1.")
+        raise Exception(f"Invalid number of arguments, ln got {len(args)} but expected 1 or 2.")
 
+    if x <= 0:
+        raise Exception(f"Operand of the logarithm must be x > 0, got {x}.")
+
+
+    # Use change of base calculation if the user specifies a base
+    if use_base:
+        return natural_log(x) / natural_log(base)
+    # Otherwise default to the ln
+    else:
+        return natural_log(x)
+
+
+# Calculates the natural logarithm ln
+def natural_log(x):
     a = x
     b = 0
 
