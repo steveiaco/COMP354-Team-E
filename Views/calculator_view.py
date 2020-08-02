@@ -8,7 +8,7 @@ class CalculatorView:
 
     def generate_cli(self):
         # todo: find a better way to clear the command prompt
-        #os.system("cls")
+        os.system("cls")
 
         # Print ASCII logo
         print(" ______ ______ ______  ______  __   __  __  ______ __  __    ")
