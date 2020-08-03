@@ -29,7 +29,7 @@ class CalculatorController:
             'ln': [ln, 'Calculates the natural logarithm for an input x.'],
             # 'a^x': [ph, 'NOT IMPLEMENTED.'],
             'mad': [mean_absolute_deviation, 'Calculates the mean absolute deviation for a given input [x,y,z,...].'],
-            'stdev': [standard_deviation, 'Calculates the standard deviation for a given input [x,y,z,...].'],
+            'stdev': [standard_deviation, 'Calculates the standard deviation for a given input [x,y,z,...0/1].\n\t\tSpecify a 0 at the end to calculate using the population stddev, a 1 to calculate using the sample stddev.'],
             'cosh': [cosh, 'Calculates the hyperbolic cosine for a given input x.'],
             'x^y': [power_function, 'Calculates the power function for a given base x and power y.'],
         }
