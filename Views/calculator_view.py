@@ -42,7 +42,7 @@ class CalculatorView:
         while True:
             # Get input from user
             args = input("Enter expression: ")
-            if ("+" in args) or ("-" in args) or ("*" in args) or ("/" in args):
+            if (" + " in args) or (" - " in args) or (" * " in args) or (" / " in args):
                 if "+" in args:
                     argsList = args.split("+")
                     self.arith_compute(argsList, "+")
