@@ -43,7 +43,6 @@ class CalculatorView:
             # Get input from user
             args = input("Enter expression: ")
             if (" + " in args) or (" - " in args) or (" * " in args) or (" / " in args):
-<<<<<<< HEAD
                 if " + " in args:
                     argsList = args.split(" + ")
                     self.arith_compute(argsList, " + ")
@@ -51,16 +50,6 @@ class CalculatorView:
                     argsList = args.split(" - ")
                     self.arith_compute(argsList, " - ")
                 elif " * " in args:
-=======
-                if "+" in args:
-                    argsList = args.split("+")
-                    self.arith_compute(argsList, "+")
-                elif "-" in args:
-                    argsList = args.split("-")
-                    self.arith_compute(argsList, "-")
-                elif "*" in args:
->>>>>>> 9405c86966e086387a603e838604e5eacac73189
-                    argsList = args.split("*")
                     self.arith_compute(argsList, " * ")
                 elif " / " in args:
                     argsList = args.split(" / ")
