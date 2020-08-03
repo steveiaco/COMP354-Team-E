@@ -16,6 +16,11 @@ x^y<br/>
 Currently, a CLI is being primarily used for user interaction. However, we have a working prototype GUI.
 
 ## Setup instructions:
+
+Running with CLI (allows the interface to be cleared with each interaction, only supported on Windows for now):
+
+1. Run "py eternity.py" in the COMP354-Team-E folder
+
 <br/><br/>
 The recommended IDE is PyCharm as it enables the user to set the root source file directory.
 
@@ -27,7 +32,3 @@ The recommended IDE is PyCharm as it enables the user to set the root source fil
 6. Right click the COMP354-Team-E folder in the PyCharm project explorer, "Mark Directory As"->"Sources Root"
 6. Right click the Functions folder (under the COMP354-Team-E folder) in the PyCharm project explorer, "Mark Directory As"->"Sources Root"
 7. Click "Run"->"Run...", setup your Python configuration, and choose the calculator.py to run the project
-
-Running with CLI (allows the interface to be cleared with each interaction):
-
-1. Run "py eternity.py" in the COMP354-Team-E folder
