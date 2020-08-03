@@ -42,7 +42,16 @@ class CalculatorView:
         while True:
             # Get input from user
             args = input("Enter expression: ")
-            if ("+" in args) or ("-" in args) or ("*" in args) or ("/" in args):
+            if (" + " in args) or (" - " in args) or (" * " in args) or (" / " in args):
+<<<<<<< HEAD
+                if " + " in args:
+                    argsList = args.split(" + ")
+                    self.arith_compute(argsList, " + ")
+                elif " - " in args:
+                    argsList = args.split(" - ")
+                    self.arith_compute(argsList, " - ")
+                elif " * " in args:
+=======
                 if "+" in args:
                     argsList = args.split("+")
                     self.arith_compute(argsList, "+")
@@ -50,11 +59,12 @@ class CalculatorView:
                     argsList = args.split("-")
                     self.arith_compute(argsList, "-")
                 elif "*" in args:
+>>>>>>> 9405c86966e086387a603e838604e5eacac73189
                     argsList = args.split("*")
-                    self.arith_compute(argsList, "*")
-                elif "/" in args:
-                    argsList = args.split("/")
-                    self.arith_compute(argsList, "/")
+                    self.arith_compute(argsList, " * ")
+                elif " / " in args:
+                    argsList = args.split(" / ")
+                    self.arith_compute(argsList, " / ")
 
             else:
                 # Split function from it's arguments
@@ -133,11 +143,5 @@ class CalculatorView:
             precision1 = arg1List[2]
         arg1Function = arg1List[0]
         arg1Arguments = arg1List[1].split(',')
-
-        # should be space on both sides
-        if (arg0Arguments[-1][-1] != " ") or (arg1Function[0] != " "):
-            self.compute_history.append(ComputeResult(function, arguments, None, True, "Invalid arguments", None,
-                                                      None, None, None))
-        arg1Function = arg1Function[1:len(arg1Function)]
         self.controller.arith_parse(arg0Function, arg0Arguments, precision0, arg1Function, arg1Arguments, precision1,
                                     operator)
