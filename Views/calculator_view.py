@@ -1,5 +1,7 @@
 import os
 
+from Models.compute_result import ComputeResult
+
 
 class CalculatorView:
 
@@ -30,7 +32,12 @@ class CalculatorView:
         functions = self.controller.get_available_functions()
 
         for k,v in functions.items():
-            print(f'{k} : {v[1]}')
+            print(f'{k} : {v[1]}\n')
+
+        print('Optional (all functions): Specify decimal precision by adding ":X" at the end of the input.'
+                '\n\t\tExample: sin(5):6 will return up to 6 decimal places.'
+                '\n\t\tOptional (all functions):  Perform arithmetic operations between FUNCTIONS (+, -, *, /).'
+                '\n\t\tExample: sin(10) + ln(10) will add sin(10) to ln(10). Note the spaces surrounding the operand.')
 
         #
         print(f"\nNumber of operations performed: {self.controller.get_compute_history_size()}\n")
@@ -55,6 +62,7 @@ class CalculatorView:
                     args = args.replace(" fraction", ",0")
             args = args.replace(" population", ",0")
             args = args.replace(" sample", ",1")
+            args = args.replace(" base ", ",")
 
             if (" + " in args) or (" - " in args) or (" * " in args) or (" / " in args):
                 if "+" in args:
