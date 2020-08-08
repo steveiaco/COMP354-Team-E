@@ -24,14 +24,24 @@ class CalculatorController:
 
         # Variable which maps the function name to its helper description and function pointer.
         self.function_map = {
-            'sin': [sine, 'Calculates the sine of an input x.\n\t\tInstructions: Let x be a number. If input is radians enter "sin:x,0". If input is degrees enter "sin:x,1".'],
-            'pi^': [pi_function, 'Calculates pi^x for a given input x.'],
-            'ln': [ln, 'Calculates the natural logarithm for an input x, (base b can be optionally specified). [x,b]'],
+            'sin': [sine, '\tCalculates the sine of an input x. Optional: Specify "radians" or "degrees" at the end of the input to specify the input type. Default is radians if nothing is added.'
+                          '\n\t\tExample input: sin(5) radians'],
+            'pi^': [pi_function, '\tCalculates pi^x for a given input x.'
+                                 '\n\t\tExample input: pi^5'],
+            'ln': [ln, '\tCalculates the natural logarithm for an input x, (base b can be optionally specified). [x,b]'],
             # 'a^x': [ph, 'NOT IMPLEMENTED.'],
-            'mad': [mean_absolute_deviation, 'Calculates the mean absolute deviation for a given input [x,y,z,...].'],
-            'stdev': [standard_deviation, 'Calculates the standard deviation for a given input [x,y,z,...0/1].\n\t\tSpecify a 0 at the end to calculate using the population stddev, a 1 to calculate using the sample stddev.'],
-            'cosh': [cosh, 'Calculates the hyperbolic cosine for a given input x. \n\t\tInstructions: Let x be a number. If input is radians enter "cosh:x,0". If input is degrees enter "cosh:x,1".'],
-            'x^y': [power_function, 'Calculates the power function for a given base x and power y. \n\t\tInstructions: Call the function then input the power and the base as "x^y:power,base". For a fractional result, input 0 as a third argument.'],
+            'mad': [mean_absolute_deviation, '\tCalculates the mean absolute deviation for a given input [x,y,z,...].'
+                                             '\n\t\tExample input: mad:1,2,3'],
+            'stdev': [standard_deviation, 'Calculates the standard deviation for a given input [x,y,z,...0/1]. Optional: Specify "population" or "sample" at the end of the input to specify population or sample standard deviation.'
+                                          '\n\t\tExample input: stdev:1,2,3 population'],
+            'cosh': [cosh, '\tCalculates the hyperbolic cosine for a given input x. Optional: Specify "radians" or "degrees" at the end of the input to specify the input type. Default is radians if nothing is added.'
+                          '\n\t\tExample input: cosh(5) degrees'],
+            'x^y': [power_function, '\tCalculates the power function for a given base x and power y. Optional: Specify "fraction" at the end of the input for a fractional result.'
+                                    '\n\t\tExample input: 5^-1.1 fraction'],
+            'other': [None, 'Optional (all functions): Specify decimal precision by adding ":X" at the end of the input.'
+                            '\n\t\tExample: sin(5):6 will return up to 6 decimal places.'
+                            '\n\t\tOptional (all functions):  Perform arithmetic operations between FUNCTIONS (+, -, *, /).'
+                            '\n\t\tExample: sin(10) + ln(10) will add sin(10) to ln(10). Note the spaces surrounding the operand.']
         }
 
     ####

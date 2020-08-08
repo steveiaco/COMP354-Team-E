@@ -42,6 +42,20 @@ class CalculatorView:
         while True:
             # Get input from user
             args = input("Enter expression: ")
+
+            args = args.replace("(", ":")
+            args = args.replace(")", "")
+            args = args.replace(" radians", ",0")
+            args = args.replace(" degrees", ",1")
+            if args.find("^") > -1:
+                if args.find("pi^") > -1:
+                    args = args.replace("pi^", "pi^:")
+                else:
+                    args = "x^y:" + args.replace("^", ",")
+                    args = args.replace(" fraction", ",0")
+            args = args.replace(" population", ",0")
+            args = args.replace(" sample", ",1")
+
             if (" + " in args) or (" - " in args) or (" * " in args) or (" / " in args):
                 if "+" in args:
                     argsList = args.split("+")
