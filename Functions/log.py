@@ -7,10 +7,29 @@ from Functions.constants import get_ln10
 # Precalculated ln(10)
 ln10 = 0
 
-#Goal: Calculate the natural logarithm, log base e, of a given input x
-#Method: we use a series based on the area hyperbolic tangent function
+# Goal: Calculate the natural logarithm, log base e, of a given input x
+# Method: we use a series based on the area hyperbolic tangent function
 def ln(args):
+    # If one argument is passed, then we can call ln
+    if len(args) == 1:
+        return ln_helper(args)
+    else:
+        raise Exception(f"Invalid number of arguments, ln got {len(args)} but expected 1.")
 
+# Goal: Calculate the logarithm, log base 10, of a given input x. The base can be changed by specifying a second parameter
+# Method: we use a series based on the area hyperbolic tangent function
+def log(args):
+    # If only one argument is passed, then we assume base 10
+    if len(args) == 1:
+        args.append(10.0)
+        return ln_helper(args)
+    # If two arguments are passed, then an operand and a base is defined.
+    elif len(args) == 2:
+        return ln_helper(args)
+    else:
+        raise Exception(f"Invalid number of arguments, log got {len(args)} but expected 1 or 2.")
+
+def ln_helper(args):
     x = 0
     base = 0
     use_base = False

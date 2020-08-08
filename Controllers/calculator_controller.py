@@ -1,6 +1,7 @@
 import copy
 from Functions.power_function import power_function
 from Functions.log import ln
+from Functions.log import log
 from Functions.sine import sine
 from Functions.cosh import cosh
 from Functions.pi import pi_function
@@ -28,8 +29,8 @@ class CalculatorController:
                           '\n\t\tExample input: sin(5) radians'],
             'pi^': [pi_function, '\tCalculates pi^x for a given input x.'
                                  '\n\t\tExample input: pi^5'],
-            'ln': [ln, '\tCalculates the natural logarithm for an input x, (base b can be optionally specified). [x,b]'],
-            # 'a^x': [ph, 'NOT IMPLEMENTED.'],
+            'ln': [ln, '\tCalculates the natural logarithm for an input x.'],
+            'log': [log, '\tCalculates the logarithm for an operand x, base b.\n\t\tOptional: base b is optional, b = 10 if it is excluded.\n\t\tExample: log(5,2) means log(5) base 2'],
             'mad': [mean_absolute_deviation, '\tCalculates the mean absolute deviation for a given input [x,y,z,...].'
                                              '\n\t\tExample input: mad:1,2,3'],
             'stdev': [standard_deviation, 'Calculates the standard deviation for a given input [x,y,z,...0/1]. Optional: Specify "population" or "sample" at the end of the input to specify population or sample standard deviation.'
