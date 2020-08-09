@@ -24,22 +24,22 @@ class CalculatorView:
         print('Separate function call and arguments by a colon (:)\nSeparate multiple arguments with commas .. arg1,'
               'arg2\nSample input: stdev:1,2,3')
         print('For arithmetic operation, space is required on both sides of operator\nSample input: sin:10 + cosh:10')
-        print('To indicate additional precision (up to 15), you can add a second colon (:) followed by a number between 1 and 15.\nSample input: ln:2:5')
+        print('To indicate additional precision (up to 15), you can add a second colon (:) followed by a number '
+              'between 1 and 15.\nSample input: ln:2:5')
         print('Print out usage history by inputting "history".')
         print(f'\nHere are the functions available for use:')
 
         # Print function info
         functions = self.controller.get_available_functions()
 
-        for k,v in functions.items():
+        for k, v in functions.items():
             print(f'{k} : {v[1]}\n')
 
         print('Optional (all functions): Specify decimal precision by adding ":X" at the end of the input.'
-                '\n\t\tExample: sin(5):6 will return up to 6 decimal places.'
-                '\n\t\tOptional (all functions):  Perform arithmetic operations between FUNCTIONS (+, -, *, /).'
-                '\n\t\tExample: sin(10) + ln(10) will add sin(10) to ln(10). Note the spaces surrounding the operand.')
+              '\n\t\tExample: sin(5):6 will return up to 6 decimal places.'
+              '\n\t\tOptional (all functions):  Perform arithmetic operations between FUNCTIONS (+, -, *, /).'
+              '\n\t\tExample: sin(10) + ln(10) will add sin(10) to ln(10). Note the spaces surrounding the operand.')
 
-        #
         print(f"\nNumber of operations performed: {self.controller.get_compute_history_size()}\n")
 
     def listen_to_user_input(self):

@@ -9,7 +9,7 @@ from Functions.auxiliary_functions import absolute_value
 from Functions.auxiliary_functions import calculate_mean
 
 
-# Primary Algoirthm
+# Primary Algorithm
 def mean_absolute_deviation(args):
     
     # Local variables

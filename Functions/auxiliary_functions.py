@@ -1,5 +1,6 @@
 from Functions.constants import get_pi
 
+
 # Calculates the floor of a decimal
 def floor_function(power):
     power *= 1.0
@@ -14,6 +15,7 @@ def floor_function(power):
 
     return number
 
+
 # Calculates the square root of a number
 def sqrt_function(base):
     precision = 0.0000000000001
@@ -25,12 +27,14 @@ def sqrt_function(base):
 
     return mid
 
+
 # Calculates the absolute value
 def absolute_value(number):
     if (number < 0):
         number *= -1
 
     return number
+
 
 # Converts a decimal to a fraction using binary search
 def decimal_to_fraction(decimal):
@@ -61,6 +65,7 @@ def decimal_to_fraction(decimal):
         else:
             return (number * middle_denominator + middle_numerator, middle_denominator)
 
+
 # Calculates the factorial using recursion
 def factorial(number):
     # factorial by recursion
@@ -70,7 +75,8 @@ def factorial(number):
     if number == 1 or number == 0:
         return 1
     else:
-        return number*factorial(number-1)
+        return number * factorial(number - 1)
+
 
 # Calculates the mean of an input
 def calculate_mean(input):
@@ -79,6 +85,7 @@ def calculate_mean(input):
         sum += x
     return (sum / len(input))
 
+
 # Tallies up all values of elements in a list
 def total_count(args):
     s = 0
@@ -86,10 +93,12 @@ def total_count(args):
         s = s + args[i]
     return s
 
+
 # Converts degree to radians
 def to_radians(degrees):
-    return degrees * (get_pi()/180)
+    return degrees * (get_pi() / 180)
+
 
 # Converts radians to degrees
 def to_degrees(radians):
-    return radians * (180/get_pi())
+    return radians * (180 / get_pi())

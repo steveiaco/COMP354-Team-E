@@ -42,7 +42,7 @@ class CalculatorController:
             'cosh': [cosh, '\tCalculates the hyperbolic cosine for a given input x. Optional: Specify "radians" or '
                            '"degrees" at the end of the input to specify the input type. Default is radians if '
                            'nothing is added.'
-                          '\n\t\tExample input: cosh(5) degrees'],
+                           '\n\t\tExample input: cosh(5) degrees'],
             'x^y': [power_function, '\tCalculates the power function for a given base x and power y. Optional: '
                                     'Specify "fraction" at the end of the input for a fractional result.'
                                     '\n\t\tExample input: 5^-1.1 fraction'],
