@@ -79,14 +79,16 @@ class CalculatorController:
         return len(self.compute_history)
 
     def parse_function_and_dispatch(self, function, arguments, precision=0):
-
         # Try converting the list of strings into a list of numbers
         try:
             arguments = [float(i) for i in arguments]
         except Exception:
-            self.compute_history.append(ComputeResult(function, arguments,
-                                                      None, True,
-                                                      "Invalid arguments"))
+
+            self.compute_history.append(ComputeResult(function, arguments, 
+                                                      None, True, 
+                                                      "Invalid arguments", 
+                                                      None, None, None, 
+                                                      None))
 
         # Check if the function specified exists in the function map,
         # if it does, call the mapped function with the provided
