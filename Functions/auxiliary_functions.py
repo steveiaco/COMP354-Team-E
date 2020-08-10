@@ -21,7 +21,8 @@ def sqrt_function(base):
     precision = 0.0000000000001
     previous, mid = 0, float(base)
 
-    # Uses binary search to find the closest approximation of the square root
+    # Uses binary search to find the closest approximation of the
+    # square root
     while absolute_value(mid - previous) > precision:
         previous, mid = mid, (mid + (base / mid)) / 2.0
 
@@ -63,7 +64,8 @@ def decimal_to_fraction(decimal):
             low_numerator = middle_numerator
             low_denominator = middle_denominator
         else:
-            return (number * middle_denominator + middle_numerator, middle_denominator)
+            return (number * middle_denominator + middle_numerator,
+                    middle_denominator)
 
 
 # Calculates the factorial using recursion

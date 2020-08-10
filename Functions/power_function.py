@@ -1,6 +1,7 @@
 # Goal: Calculate the specified power of a specified base
 # Handling: Does not compute complex numbers
-# Instructions: Enter "0" as the third argument of the power function to obtain a fractional result
+# Instructions: Enter "0" as the third argument of the power function to
+# obtain a fractional result
 # Author: Amina
 
 from Functions.auxiliary_functions import floor_function
@@ -13,21 +14,25 @@ def power_function(args):
     base = 0
     power = 0
 
-    # If two arguments are passed, the result will be an integer or a decimal
+    # If two arguments are passed, the result will be an integer or a
+    # decimal
     if (len(args) == 2):
         base = args[0]
         power = args[1]
         conversion = "decimal"
-    # If three arguments are passed, where the third argument is a 0, the result will be an integer or a fraction
+    # If three arguments are passed, where the third argument is a 0,
+    # the result will be an integer or a fraction
     elif (len(args) == 3):
         if (args[2] == 0):
             base = args[0]
             power = args[1]
             conversion = "fraction"
         else:
-            raise Exception(f"Invalid third argument, power_function got {str(args[2])} but expected 0.")
+            raise Exception(f"Invalid third argument, power_function got "
+                            f"{str(args[2])} but expected 0.")
     else:
-        raise Exception(f"Invalid number of arguments, power_function got {len(args)} but expected 2 or 3.")
+        raise Exception(f"Invalid number of arguments, power_function got "
+                        f"{len(args)} but expected 2 or 3.")
 
     # Case 1: Power is equal to 0
     if (power == 0):
@@ -109,10 +114,12 @@ def power_fractional(base, power):
     # Suppose we have a^(b/c), where "a" is negative...
     if (base < 0):
         # Case 1: "b" is even -> the result is a real number
-        # Case 2: "b" is odd and "c" is odd -> the result is a real number
+        # Case 2: "b" is odd and "c" is odd -> the result is a real
+        # number
         if (fraction[0] % 2 == 0 or fraction[1] % 2 != 0):
             return -1 * power_fractional(base * -1, power)
-        # Case 3: "b" is odd and "c" is even -> the result is a complex number
+        # Case 3: "b" is odd and "c" is even -> the result is a complex
+        # number
         else:
             print("ERROR")
             return -0.0
@@ -126,7 +133,8 @@ def power_fractional(base, power):
         decimal_result = root
         mid = high / 2
 
-        # Uses binary search to find the closest value to the equation's result by continuously applying the square root
+        # Uses binary search to find the closest value to the equation's
+        # result by continuously applying the square root
         while (absolute_value(mid - decimal_value) > precision):
             root = sqrt_function(root)
 

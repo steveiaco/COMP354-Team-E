@@ -15,22 +15,24 @@ def ln(args):
     if len(args) == 1:
         return ln_helper(args)
     else:
-        raise Exception(f"Invalid number of arguments, ln got {len(args)} but expected 1.")
+        raise Exception(f"Invalid number of arguments, ln got {len(args)} "
+                        f"but expected 1.")
 
 
-# Goal: Calculate the logarithm, log base 10, of a given input x. The base can be changed by specifying a second
-# parameter
+# Goal: Calculate the logarithm, log base 10, of a given input x. The
+# base can be changed by specifying a second parameter
 # Method: we use a series based on the area hyperbolic tangent function
 def log(args):
     # If only one argument is passed, then we assume base 10
     if len(args) == 1:
         args.append(10.0)
         return ln_helper(args)
-    # If two arguments are passed, then an operand and a base is defined.
+    # If two arguments are passed, then an operand and a base is defined
     elif len(args) == 2:
         return ln_helper(args)
     else:
-        raise Exception(f"Invalid number of arguments, log got {len(args)} but expected 1 or 2.")
+        raise Exception(f"Invalid number of arguments, log got {len(args)} "
+                        f"but expected 1 or 2.")
 
 
 def ln_helper(args):
@@ -38,18 +40,22 @@ def ln_helper(args):
     base = 0
     use_base = False
 
-    # If one argument is passed, then only an operand is passed, and we assume a base of e.
+    # If one argument is passed, then only an operand is passed, and
+    # we assume a base of e.
     if len(args) == 1:
         x = args[0]
-    # If two arguments are passed, then an operand and a base is defined.
+    # If two arguments are passed, then an operand and a base is
+    # defined.
     elif len(args) == 2:
         x = args[0]
         base = args[1]
         use_base = True
         if base <= 0 or base == 1:
-            raise Exception(f"Base of the logarithm must be b > 0 and b != 1, got {base}.")
+            raise Exception(f"Base of the logarithm must be b > 0 and b != 1, "
+                            f"got {base}.")
     else:
-        raise Exception(f"Invalid number of arguments, ln got {len(args)} but expected 1 or 2.")
+        raise Exception(f"Invalid number of arguments, ln got {len(args)} but "
+                        f"expected 1 or 2.")
 
     if x <= 0:
         raise Exception(f"Operand of the logarithm must be x > 0, got {x}.")
@@ -76,8 +82,9 @@ def natural_log(x):
     # Variable used to store the calculated sum
     s = 0
 
-    # Number of iterations currently hardcoded at 100, but we can change this to an accuracy based metric by
-    # calculating the accuracy of e^s = x to a certain bound.
+    # Number of iterations currently hardcoded at 100, but we can change
+    # this to an accuracy based metric by calculating the accuracy of
+    # e^s = x to a certain bound.
     for i in range(100):
         s += (1 / (2 * i + 1)) * power_function([(a - 1) / (a + 1), 2 * i + 1])
 

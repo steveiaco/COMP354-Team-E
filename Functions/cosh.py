@@ -23,5 +23,7 @@ def cosh(args):
         x = to_radians(args[0])
         return (power_function([e, x]) + power_function([e, -x])) / 2
     else:
-        raise Exception("Invalid input: cosh takes 1 input which is the number in radians, "
-                        "or 2 inputs which is the number and whether the number is in \" radians\" or \" degrees\".")
+        raise Exception("Invalid input: cosh takes 1 input which is the "
+                        "number in radians, or 2 inputs which is the number "
+                        "and whether the number is in \" radians\" or \" "
+                        "degrees\".")
