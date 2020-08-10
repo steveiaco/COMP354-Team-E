@@ -36,12 +36,14 @@ def standard_deviation(args):
         if flag == 1.0:
             # Sample stdev requires at least 2 numbers
             if count == 2:
-                raise TypeError('Sample Standard Deviation requires at least 2 numbers !')
+                raise TypeError('Sample Standard Deviation requires at least '
+                                '2 numbers !')
             else:
                 args = args[:-1]
                 count -= 1
                 args_sqr = helper(args, count)
-                return power_function([total_count(args_sqr) / (count - 1), 0.5])
+                return power_function([total_count(args_sqr)
+                                       / (count - 1), 0.5])
         else:
             raise TypeError('Please specify the type of standard deviation !')
     else:

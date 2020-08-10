@@ -14,33 +14,44 @@ class CalculatorView:
 
         # Print ASCII logo
         print(" ______ ______ ______  ______  __   __  __  ______ __  __    ")
-        print("/\\  ___/\\__  _/\\  ___\\/\\  == \\/\\ \"-.\\ \\/\\ \\/\\__  _/\\ \\_\\ \\   ")
-        print("\\ \\  __\\/_/\\ \\\\ \\  __\\\\ \\  __<\\ \\ \\-.  \\ \\ \\/_/\\ \\\\ \\____ \\  ")
-        print(" \\ \\_____\\\\ \\_\\\\ \\_____\\ \\_\\ \\_\\ \\_\\\\\"\\_\\ \\_\\ \\ \\_\\\\/\\_____\\ ")
-        print("  \\/_____/ \\/_/ \\/_____/\\/_/ /_/\\/_/ \\/_/\\/_/  \\/_/ \\/_____/   \n")
+        print("/\\  ___/\\__  _/\\  ___\\/\\  == \\/\\ \"-.\\ \\/\\ \\/\\__  _"
+              "/\\ \\_\\ \\   ")
+        print("\\ \\  __\\/_/\\ \\\\ \\  __\\\\ \\  __<\\ \\ \\-.  \\ \\ \\/_/"
+              "\\ \\\\ \\____ \\  ")
+        print(" \\ \\_____\\\\ \\_\\\\ \\_____\\ \\_\\ \\_\\ \\_\\\\\"\\_\\ \\"
+              "_\\ \\ \\_\\\\/\\_____\\ ")
+        print("  \\/_____/ \\/_/ \\/_____/\\/_/ /_/\\/_/ \\/_/\\/_/  \\/_/ \\/"
+              "_____/   \n")
 
         # Print usage instructions
         print("Usage instructions:")
-        print('Separate function call and arguments by a colon (:)\nSeparate multiple arguments with commas .. arg1,'
+        print('Separate function call and arguments by a colon (:)\nSeparate '
+              'multiple arguments with commas .. arg1,'
               'arg2\nSample input: stdev:1,2,3')
-        print('For arithmetic operation, space is required on both sides of operator\nSample input: sin:10 + cosh:10')
-        print('To indicate additional precision (up to 15), you can add a second colon (:) followed by a number between 1 and 15.\nSample input: ln:2:5')
+        print('For arithmetic operation, space is required on both sides of '
+              'operator\nSample input: sin:10 + cosh:10')
+        print('To indicate additional precision (up to 15), you can add a '
+              'second colon (:) followed by a number '
+              'between 1 and 15.\nSample input: ln:2:5')
         print('Print out usage history by inputting "history".')
         print(f'\nHere are the functions available for use:')
 
         # Print function info
         functions = self.controller.get_available_functions()
 
-        for k,v in functions.items():
+        for k, v in functions.items():
             print(f'{k} : {v[1]}\n')
 
-        print('Optional (all functions): Specify decimal precision by adding ":X" at the end of the input.'
-                '\n\t\tExample: sin(5):6 will return up to 6 decimal places.'
-                '\n\t\tOptional (all functions):  Perform arithmetic operations between FUNCTIONS (+, -, *, /).'
-                '\n\t\tExample: sin(10) + ln(10) will add sin(10) to ln(10). Note the spaces surrounding the operand.')
+        print('Optional (all functions): Specify decimal precision by adding '
+              '":X" at the end of the input.'
+              '\n\t\tExample: sin(5):6 will return up to 6 decimal places.'
+              '\n\t\tOptional (all functions):  Perform arithmetic operations '
+              'between FUNCTIONS (+, -, *, /).'
+              '\n\t\tExample: sin(10) + ln(10) will add sin(10) to ln(10). '
+              'Note the spaces surrounding the operand.')
 
-        #
-        print(f"\nNumber of operations performed: {self.controller.get_compute_history_size()}\n")
+        print(f"\nNumber of operations performed: "
+              f"{self.controller.get_compute_history_size()}\n")
 
     def listen_to_user_input(self):
 
@@ -64,7 +75,10 @@ class CalculatorView:
             args = args.replace(" sample", ",1")
             args = args.replace(" base ", ",")
 
-            if (" + " in args) or (" - " in args) or (" * " in args) or (" / " in args):
+            if (" + " in args)\
+                    or (" - " in args) \
+                    or (" * " in args) \
+                    or (" / " in args):
                 if " + " in args:
                     argsList = args.split(" + ")
                     self.arith_compute(argsList, " + ")
@@ -87,13 +101,16 @@ class CalculatorView:
                 elif len(user_input) == 2:
                     function = user_input[0]
                     arguments = user_input[1].split(',')
-                    self.controller.parse_function_and_dispatch(function, arguments)
+                    self.controller.parse_function_and_dispatch(function,
+                                                                arguments)
 
                 elif len(user_input) == 3:
                     function = user_input[0]
                     arguments = user_input[1].split(',')
                     precision = user_input[2]
-                    self.controller.parse_function_and_dispatch(function, arguments, precision)
+                    self.controller.parse_function_and_dispatch(function,
+                                                                arguments,
+                                                                precision)
 
                 else:
                     self.controller.invalid_user_input(user_input)
@@ -111,7 +128,8 @@ class CalculatorView:
     def format_and_print_history_point(h):
         if h.error:
             if h.function_called2 is not None:
-                print(f"{h.function_called}:{h.input} {h.operator} {h.function_called2}:{h.input2} {h.error_message}")
+                print(f"{h.function_called}:{h.input} {h.operator} "
+                      f"{h.function_called2}:{h.input2} {h.error_message}")
             else:
                 print(f"{h.function_called}:{h.input} {h.error_message}")
         elif h.function_called2 is not None:
@@ -123,17 +141,20 @@ class CalculatorView:
                 finalres = h.output * h.output2
             elif "/" in h.operator:
                 finalres = h.output / h.output2
-            print(f"{h.function_called}:{h.input} {h.operator} {h.function_called2}:{h.input2} = {finalres}")
+            print(f"{h.function_called}:{h.input} {h.operator} "
+                  f"{h.function_called2}:{h.input2} = {finalres}")
         else:
             print(f"{h.function_called}:{h.input} = {h.output}")
 
-    # Observer function used to update the view whenever there is a change in the Model / Controller
+    # Observer function used to update the view whenever there is a
+    # change in the Model / Controller
     def update(self):
         self.generate_cli()
 
         if len(self.controller.compute_history) > 0:
             print("Last operation:")
-            self.format_and_print_history_point(self.controller.compute_history[-1])
+            self.format_and_print_history_point(
+                self.controller.compute_history[-1])
             print()
 
     def arith_compute(self, argsList, operator):
@@ -154,5 +175,8 @@ class CalculatorView:
             precision1 = arg1List[2]
         arg1Function = arg1List[0]
         arg1Arguments = arg1List[1].split(',')
-        self.controller.arith_parse(arg0Function, arg0Arguments, precision0, arg1Function, arg1Arguments, precision1,
+
+        self.controller.arith_parse(arg0Function, arg0Arguments, 
+                                    precision0, arg1Function, 
+                                    arg1Arguments, precision1,
                                     operator)
