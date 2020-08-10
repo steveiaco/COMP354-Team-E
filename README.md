@@ -25,10 +25,21 @@ Running with CLI (allows the interface to be cleared with each interaction, only
 The recommended IDE is PyCharm as it enables the user to set the root source file directory.
 
 1. Clone the repository using `https://github.com/steveiaco/COMP354-Team-E.git`
-2. Open PyCharm
-3. Click Open in the "Welcome to Pycharm" window or click "File"->"Open"
-4. Navigate and select the "COMP354-Team-E" folder that was created in step 1
-5. Click Ok
-6. Right click the COMP354-Team-E folder in the PyCharm project explorer, "Mark Directory As"->"Sources Root"
-6. Right click the Functions folder (under the COMP354-Team-E folder) in the PyCharm project explorer, "Mark Directory As"->"Sources Root"
-7. Click "Run"->"Run...", setup your Python configuration, and choose the calculator.py to run the project
+1. Open PyCharm
+1. Click Open in the "Welcome to Pycharm" window or click "File"->"Open"
+1. Navigate and select the "COMP354-Team-E" folder that was created in step 1
+1. Click Ok
+1. Right click the COMP354-Team-E folder in the PyCharm project explorer, "Mark Directory As"->"Sources Root"
+1. Right click the Functions folder (under the COMP354-Team-E folder) in the PyCharm project explorer, "Mark Directory As"->"Sources Root"
+1. Click "Run"->"Run...", setup your Python configuration, and choose the calculator.py to run the project
+
+## Running unit tests
+
+In order to run unit tests, you must have the following packages available
+
+1. pandas
+
+In order to launch the tests,
+
+1. Open a terminal and cd to the root of the project
+1. Run "py run_tests.py"

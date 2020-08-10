@@ -1,10 +1,10 @@
 import math
 import pandas
-import numpy
 import random
 import statistics
 
 from log import ln
+from log import log
 from power_function import power_function
 from mean_absolute_deviation import mean_absolute_deviation
 from standard_deviation import standard_deviation
@@ -38,6 +38,23 @@ def pi_test():
         if error > PRECISION:
             print(f'{bcolors.FAIL}Outside of acceptable range. \n \t pi({i}) = {calc} \n \t actual = {result} \n \t error of: {error} \n')
             return False
+
+    return True
+
+# ln test
+def log_test():
+    print(f'{bcolors.HEADER}log test starting...')
+    for i in range(1, 1000):
+        # Iterate through different bases
+        for j in range (2,17,3):
+            calc = log([i,j])
+            result = math.log(i,j)
+            error = calc - result
+
+            error = abs(error)
+            if error > PRECISION:
+                print(f'{bcolors.FAIL}Outside of acceptable range. \n \t ln({i}) = {calc} \n \t actual = {result} \n \t error of: {error} \n')
+                return False
 
     return True
 
@@ -167,45 +184,69 @@ def mad_test_decimal():
 # standard deviation test for decimal cases
 def std_test_integer():
     print(f'{bcolors.HEADER}std_integer test starting...')
-    for i in range(0, 10): 
-        list = []
-        for j in range(0, 10):
-            x = random.randint(0, 100)
-            list.append(x)
-        calc = round(standard_deviation(list), 10)
-        result = round(statistics.pstdev(list), 10)
-        error = calc - result
 
-        error = abs(error)
+    # population vs sample stddev
+    standTypes = [0, 1]
+    for standType in standTypes:
+        for i in range(0, 10):
+            list = []
+            for j in range(0, 10):
+                x = random.randint(0, 100)
+                list.append(x)
 
-        if error > PRECISION:
-            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t standard_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
-            return False
+            result = 0
+            if standType == 0:
+                result = round(statistics.pstdev(list), 10)
+            elif standType == 1:
+                result = round(statistics.stdev(list), 10)
+
+            list.append(standType)
+            calc = round(standard_deviation(list), 10)
+
+            error = calc - result
+
+            error = abs(error)
+
+            if error > PRECISION:
+                print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t standard_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
+                return False
     return True
 
 # standard deviation test for integer cases
 def std_test_decimal():
     print(f'{bcolors.HEADER}std_decimal test starting...')
-    for i in range(0, 10): 
-        list = []
-        for j in range(0, 10):
-            x = random.random()
-            list.append(x)
-        calc = round(standard_deviation(list), 10)
-        result = round(statistics.pstdev(list), 10)
-        error = calc - result
 
-        error = abs(error)
+        # population vs sample stddev
+    standTypes = [0, 1]
+    for standType in standTypes:
+        for i in range(0, 10):
+            list = []
+            for j in range(0, 10):
+                x = random.random()
+                list.append(x)
 
-        if error > PRECISION:
-            print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t standard_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
-            return False
+            result = 0
+            if standType == 0:
+                result = round(statistics.pstdev(list), 10)
+            elif standType == 1:
+                result = round(statistics.stdev(list), 10)
+
+            list.append(standType)
+            calc = round(standard_deviation(list), 10)
+            error = calc - result
+
+            error = abs(error)
+
+            if error > PRECISION:
+                print(f'{bcolors.FAIL}Outside of acceptable range. \n \t list: {list} \n \t standard_deviation:{calc}. \n \t actual: {result}. \n \t error of: {error} \n')
+                return False
 
     return True
 
 # Define all tests and their names
 test_map = {
     'ln': ln_test,
+    'log':log_test,
     'sine': sine_test,
     'cosh': cosh_test,
     'power_function_integer': pf_test_integer,
